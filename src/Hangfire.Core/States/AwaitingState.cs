@@ -72,9 +72,9 @@ namespace Hangfire.States
         public bool IsFinal { get { return false; } }
         public bool IgnoreJobLoadException { get { return false; } }
 
-        public Dictionary<string, string> SerializeData()
+        public Dictionary<string, object> SerializeData()
         {
-            return new Dictionary<string, string>
+            return new Dictionary<string, object>
             {
                 { "ParentId", ParentId },
                 { "NextState", JsonConvert.SerializeObject(NextState, Formatting.None, new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Objects }) },

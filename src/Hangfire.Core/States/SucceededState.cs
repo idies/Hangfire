@@ -45,9 +45,9 @@ namespace Hangfire.States
         public bool IsFinal { get { return true; } }
         public bool IgnoreJobLoadException { get { return false; } }
 
-        public Dictionary<string, string> SerializeData()
+        public Dictionary<string, object> SerializeData()
         {
-            var data = new Dictionary<string, string>
+            var data = new Dictionary<string, object>
             {
                 { "SucceededAt",  JobHelper.SerializeDateTime(SucceededAt) },
                 { "PerformanceDuration", PerformanceDuration.ToString(CultureInfo.InvariantCulture) },
@@ -56,7 +56,7 @@ namespace Hangfire.States
 
             if (Result != null)
             {
-                data.Add("Result", JobHelper.ToJson(Result));
+                data.Add("Result", Result);
             }
 
             return data;

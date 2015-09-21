@@ -25,6 +25,6 @@ namespace Hangfire.States
         bool IsFinal { get; }
         bool IgnoreJobLoadException { get; }
 
-        Dictionary<string, string> SerializeData();
+        Dictionary<string, object> SerializeData();
     }
 }

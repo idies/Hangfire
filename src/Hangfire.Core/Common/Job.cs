@@ -393,7 +393,7 @@ namespace Hangfire.Common
                     }
                     else
                     {
-	                    value = JobHelper.ToJson(argument);
+                        value = argument.ToString();
                     }
                 }
 
