@@ -54,7 +54,14 @@ namespace Hangfire.SqlServer
         {
             using (var transaction = CreateTransaction(_isolationLevel))
             {
-                _connection.EnlistTransaction(Transaction.Current);
+                try 
+                {
+                    _connection.EnlistTransaction(Transaction.Current);
+                }
+                catch 
+                {
+                    // Doesn't work in Mono
+                }
 
                 if (_lockedResources.Count > 0)
                 {
